@@ -22,7 +22,7 @@ public class MovieRepositoryImpl implements MovieRepositoryCustom {
     @Override
     public List<MovieDTO> findMoviesLessThan(Integer runningTime) {
         List<Object[]> objects =
-            em.createQuery("""
+                em.createQuery("""
                 select 
                     m, s 
                 from Movie m left join Screening s 
@@ -50,3 +50,4 @@ public class MovieRepositoryImpl implements MovieRepositoryCustom {
         return new ArrayList<>(movies.values());
     }
 }
+
