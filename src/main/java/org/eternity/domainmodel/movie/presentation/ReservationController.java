@@ -2,9 +2,6 @@ package org.eternity.domainmodel.movie.presentation;
 
 import org.eternity.domainmodel.generic.Money;
 import org.eternity.domainmodel.movie.domain.Reservation;
-import org.eternity.domainmodel.movie.persistence.CustomerRepository;
-import org.eternity.domainmodel.movie.persistence.ReservationRepository;
-import org.eternity.domainmodel.movie.persistence.ScreeningRepository;
 import org.eternity.domainmodel.movie.service.ReservationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,16 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 //  curl -H "Content-Type: application/json" -X POST http://localhost:8080/reservations  -d '{"customerId":1, "screeningId":1, "audienceCount":2}'
 @RestController
 public class ReservationController {
-    private CustomerRepository customerRepository;
-    private ScreeningRepository screeningRepository;
-    private ReservationRepository reservationRepository;
-
     private ReservationService reservationService;
 
-    public ReservationController(CustomerRepository customerRepository, ScreeningRepository screeningRepository, ReservationRepository reservationRepository, ReservationService reservationService) {
-        this.customerRepository = customerRepository;
-        this.screeningRepository = screeningRepository;
-        this.reservationRepository = reservationRepository;
+    public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
